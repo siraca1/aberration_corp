@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="OfficeData" load_steps=2 format=3 uid="uid://cwcdbrr34rk0x"]
+
+[ext_resource type="Script" path="res://scripts/resources/office_data.gd" id="1_yhlsd"]
+
+[resource]
+script = ExtResource("1_yhlsd")
+name = "Builder"
+slots_number = 2

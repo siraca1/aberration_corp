@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://h4tdme047l14"]
+
+[ext_resource type="Script" path="res://scripts/utils/smart_timer.gd" id="1_x2loq"]
+
+[node name="SmartTimer" type="Timer"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+script = ExtResource("1_x2loq")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

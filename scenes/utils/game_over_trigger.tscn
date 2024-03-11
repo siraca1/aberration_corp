@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://doflqwvm7vm54"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/game_end_trigger.gd" id="1_bq1pb"]
+
+[node name="GameOverTrigger" type="Node"]
+script = ExtResource("1_bq1pb")
+delay = 2.0
+is_game_over = true

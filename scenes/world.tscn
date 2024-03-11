@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce0citawrgmt6"]
+
+[ext_resource type="PackedScene" uid="uid://dqa62ebyry5ln" path="res://scenes/gameplay/company.tscn" id="1_4gpu8"]
+[ext_resource type="PackedScene" uid="uid://uytj3p1q0bs7" path="res://scenes/gameplay/product.tscn" id="2_n6w7y"]
+
+[sub_resource type="Environment" id="Environment_25x0i"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_31d7s"]
+size = Vector2(100, 100)
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_25x0i")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.491733, 0.80369, -0.335084, -0.740893, 0.588357, 0.323904, 0.457467, 0.0889865, 0.884763, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." groups=["MainCameras"]]
+transform = Transform3D(1, 0, 0, 0, 0.856727, 0.515771, 0, -0.515771, 0.856727, 0, 3.92989, 4.33598)
+
+[node name="Company" parent="." instance=ExtResource("1_4gpu8")]
+layout_spacing = 2.0
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_31d7s")
+
+[node name="Product" parent="." instance=ExtResource("2_n6w7y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.945992, 0, 1.42895)

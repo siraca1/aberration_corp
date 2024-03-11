@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5oft3gte6gxc"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/slot.gd" id="1_w0cq6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tiqk3"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0wvr"]
+transparency = 1
+albedo_color = Color(0.92549, 0.784314, 0.270588, 0.784314)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n5jkj"]
+material = SubResource("StandardMaterial3D_i0wvr")
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="Slot" type="Area3D"]
+script = ExtResource("1_w0cq6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tiqk3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_n5jkj")
