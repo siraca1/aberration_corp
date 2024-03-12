@@ -12,9 +12,10 @@ albedo_color = Color(0.272756, 0.593814, 0.805355, 0.490196)
 [sub_resource type="BoxMesh" id="BoxMesh_3tfeu"]
 material = SubResource("StandardMaterial3D_4bp5e")
 
-[node name="Office" type="Area3D" node_paths=PackedStringArray("slot_holder")]
+[node name="Office" type="Area3D" node_paths=PackedStringArray("slot_holder", "title_label")]
 script = ExtResource("1_na4sn")
 slot_holder = NodePath("SlotsHolder")
+title_label = NodePath("TitleLabel")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -26,3 +27,8 @@ mesh = SubResource("BoxMesh_3tfeu")
 
 [node name="SlotsHolder" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, 0.25)
+
+[node name="TitleLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1)
+text = "Office"
+font_size = 50

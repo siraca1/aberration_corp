@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqa62ebyry5ln"]
+[gd_scene load_steps=5 format=3 uid="uid://dqa62ebyry5ln"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/company.gd" id="1_sxn0i"]
-[ext_resource type="Resource" uid="uid://cwcdbrr34rk0x" path="res://resources/office_builder.tres" id="2_shkmj"]
-[ext_resource type="Resource" uid="uid://cmx4o4yv0jqcb" path="res://resources/office_client.tres" id="3_db8in"]
+[ext_resource type="Resource" uid="uid://cwcdbrr34rk0x" path="res://resources/office_data/office_builder.tres" id="2_shkmj"]
+[ext_resource type="Resource" uid="uid://cmx4o4yv0jqcb" path="res://resources/office_data/office_client.tres" id="3_db8in"]
+[ext_resource type="Script" path="res://scripts/utils/smart_timer.gd" id="4_121xx"]
 
 [node name="Company" type="Node3D" node_paths=PackedStringArray("links_holder", "bound_minus_x", "bound_plus_x", "bound_minus_z", "bound_plus_z")]
 script = ExtResource("1_sxn0i")
@@ -28,3 +29,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="BoundZ" type="Node3D" parent="Bounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="SmartTimer" type="Timer" parent="." node_paths=PackedStringArray("target_node")]
+wait_time = 10.0
+autostart = true
+script = ExtResource("4_121xx")
+target_node = NodePath("..")
+target_method = "add_office"

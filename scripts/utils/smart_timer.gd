@@ -6,7 +6,11 @@ extends Timer
 @export var target_method: String = ""
 
 
-func _on_timeout() -> void:
+func _ready() -> void:
+	timeout.connect(on_timeout)
+
+
+func on_timeout() -> void:
 	if not target_node or target_method.is_empty():
 		return
 	

@@ -3,7 +3,6 @@ extends Node
 
 var game_pause: bool = false
 
-
 var _navigation_scene:PackedScene = preload(GlobalConstants.SCENE_NAVIGATION)
 var _navigation: Navigation: set = _set_navigation, get = _get_navigation
 
@@ -25,6 +24,15 @@ func end_game(game_over: bool) -> void:
 		_navigation.go_to(GlobalConstants.SCENE_GAME_OVER)
 	else:
 		_navigation.go_to(GlobalConstants.SCENE_GAME_END)
+
+
+func get_office_database(index: int) -> OfficeData:
+	var all_offices:= GlobalConstants.DATA_OFFICE.load_all()
+	
+	if index >= all_offices.size():
+		return null
+	
+	return all_offices[index] as OfficeData
 
 
 func _set_navigation(new_navigation: Navigation) -> void:

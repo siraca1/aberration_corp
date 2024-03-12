@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="OfficeData" load_steps=2 format=3 uid="uid://cmx4o4yv0jqcb"]
+
+[ext_resource type="Script" path="res://scripts/resources/office_data.gd" id="1_rbmj3"]
+
+[resource]
+script = ExtResource("1_rbmj3")
+name = "Client"
+slots_number = 5
+size = Vector3(1, 1, 1)

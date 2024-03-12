@@ -18,6 +18,21 @@ var link_scene: PackedScene = preload(GlobalConstants.SCENE_LINK)
 var current_offices: Array[Office]
 
 
+func add_office(office: OfficeData = null) -> void:
+	if not office:
+		office = GameManager.get_office_database(current_offices.size());
+	if not office:
+		GameManager.end_game(false)
+		return
+	
+	var new_instance = office_scene.instantiate() as Office
+	new_instance.setup(office)
+	add_child(new_instance)
+	current_offices.append(new_instance)
+	update_struture()
+	print("adding office")
+
+
 func update_struture() -> void:
 	reframe_all()
 	create_links()
@@ -25,10 +40,10 @@ func update_struture() -> void:
 
 func reframe_all() -> void:
 	var bounds: Vector4
-	for office in current_offices.size():
-		var index:float = office as float / default_offices.size() as float
-		current_offices[office].position = Vector3(index * default_offices[office].size.x * 2.0 + index * layout_spacing, 0, 0)
-		bounds = _update_bounds_data(bounds, current_offices[office].global_position)
+	for i in current_offices.size():
+		var index:float = i as float / default_offices.size() as float
+		current_offices[i].position = Vector3(index * current_offices[i].office_data.size.x * 2.0 + index * layout_spacing, 0, 0)
+		bounds = _update_bounds_data(bounds, current_offices[i].global_position)
 	_update_bounds_positions(bounds)
 
 
@@ -46,12 +61,8 @@ func create_links() -> void:
 
 
 func _ready() -> void:
-	for office in default_offices.size():
-		var new_instance = office_scene.instantiate() as Office
-		new_instance.setup(default_offices[office])
-		add_child(new_instance)
-		current_offices.append(new_instance)
-		update_struture()
+	for office in default_offices:
+		add_office(office)
 
 
 func _update_bounds_data(bounds: Vector4, new_vector: Vector3) -> Vector4:
