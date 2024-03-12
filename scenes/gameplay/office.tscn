@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjwxxtng8j1cb"]
+[gd_scene load_steps=5 format=3 uid="uid://bjwxxtng8j1cb"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/office.gd" id="1_na4sn"]
-[ext_resource type="PackedScene" uid="uid://lqt6q4ou10ug" path="res://scenes/gameplay/draggable.tscn" id="2_xe7hg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jexws"]
 
@@ -27,6 +26,3 @@ mesh = SubResource("BoxMesh_3tfeu")
 
 [node name="SlotsHolder" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, 0.25)
-
-[node name="Draggable" parent="." node_paths=PackedStringArray("node_to_move") instance=ExtResource("2_xe7hg")]
-node_to_move = NodePath("..")

@@ -1,10 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://uytj3p1q0bs7"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/product.gd" id="1_6ea25"]
-[ext_resource type="PackedScene" uid="uid://lqt6q4ou10ug" path="res://scenes/gameplay/draggable.tscn" id="2_6ntxc"]
+[ext_resource type="Script" path="res://addons/drag_and_snap/nodes/draggable.gd" id="2_ovtc0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m4bpu"]
-size = Vector3(0.2, 0.2, 0.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ml7tt"]
 albedo_color = Color(0, 0.890196, 0.890196, 1)
@@ -13,7 +12,8 @@ albedo_color = Color(0, 0.890196, 0.890196, 1)
 material = SubResource("StandardMaterial3D_ml7tt")
 size = Vector3(0.2, 0.2, 0.2)
 
-[node name="Product" type="Area3D"]
+[node name="Product" type="RigidBody3D"]
+gravity_scale = 0.0
 script = ExtResource("1_6ea25")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -24,5 +24,5 @@ shape = SubResource("BoxShape3D_m4bpu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 mesh = SubResource("BoxMesh_l40nk")
 
-[node name="Draggable" parent="." node_paths=PackedStringArray("node_to_move") instance=ExtResource("2_6ntxc")]
-node_to_move = NodePath("..")
+[node name="Draggable" type="Node" parent="."]
+script = ExtResource("2_ovtc0")

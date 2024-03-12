@@ -4,9 +4,27 @@
 [ext_resource type="Resource" uid="uid://cwcdbrr34rk0x" path="res://resources/office_builder.tres" id="2_shkmj"]
 [ext_resource type="Resource" uid="uid://cmx4o4yv0jqcb" path="res://resources/office_client.tres" id="3_db8in"]
 
-[node name="Company" type="Node3D" node_paths=PackedStringArray("links_holder")]
+[node name="Company" type="Node3D" node_paths=PackedStringArray("links_holder", "bound_minus_x", "bound_plus_x", "bound_minus_z", "bound_plus_z")]
 script = ExtResource("1_sxn0i")
 default_offices = Array[Resource("res://scripts/resources/office_data.gd")]([ExtResource("2_shkmj"), ExtResource("3_db8in")])
 links_holder = NodePath("LinksHolder")
+bound_minus_x = NodePath("Bounds/Bound-X")
+bound_plus_x = NodePath("Bounds/BoundX")
+bound_minus_z = NodePath("Bounds/Bound-Z")
+bound_plus_z = NodePath("Bounds/BoundZ")
 
 [node name="LinksHolder" type="Node3D" parent="."]
+
+[node name="Bounds" type="Node3D" parent="."]
+
+[node name="Bound-X" type="Node3D" parent="Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="BoundX" type="Node3D" parent="Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Bound-Z" type="Node3D" parent="Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="BoundZ" type="Node3D" parent="Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

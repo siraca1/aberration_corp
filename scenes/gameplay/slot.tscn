@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5oft3gte6gxc"]
+[gd_scene load_steps=7 format=3 uid="uid://c5oft3gte6gxc"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/slot.gd" id="1_w0cq6"]
+[ext_resource type="Script" path="res://addons/drag_and_snap/nodes/snap_point.gd" id="2_vtodu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tiqk3"]
 size = Vector3(0.25, 0.25, 0.25)
@@ -13,6 +14,8 @@ albedo_color = Color(0.92549, 0.784314, 0.270588, 0.784314)
 material = SubResource("StandardMaterial3D_i0wvr")
 size = Vector3(0.25, 0.25, 0.25)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_da285"]
+
 [node name="Slot" type="Area3D"]
 script = ExtResource("1_w0cq6")
 
@@ -21,3 +24,7 @@ shape = SubResource("BoxShape3D_tiqk3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_n5jkj")
+
+[node name="SnapPoint" type="Area3D" parent="."]
+script = ExtResource("2_vtodu")
+snap_shape = SubResource("BoxShape3D_da285")

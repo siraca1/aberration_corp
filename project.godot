@@ -20,3 +20,12 @@ config/icon="res://icon.svg"
 GameManager="*res://scripts/autoloads/game_manager.gd"
 GlobalConstants="*res://scripts/autoloads/global_constants.gd"
 Utils="*res://scripts/autoloads/utils.gd"
+DragSnap="*res://addons/drag_and_snap/nodes/drag_snap.gd"
+
+[display]
+
+window/size/always_on_top=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/drag_and_snap/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")

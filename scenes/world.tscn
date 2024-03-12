@@ -1,7 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce0citawrgmt6"]
+[gd_scene load_steps=9 format=3 uid="uid://ce0citawrgmt6"]
 
 [ext_resource type="PackedScene" uid="uid://dqa62ebyry5ln" path="res://scenes/gameplay/company.tscn" id="1_4gpu8"]
 [ext_resource type="PackedScene" uid="uid://uytj3p1q0bs7" path="res://scenes/gameplay/product.tscn" id="2_n6w7y"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="4_e8nsd"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_1l175"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_6gaw8"]
+
+[sub_resource type="Resource" id="Resource_cc6pa"]
+script = ExtResource("5_6gaw8")
+duration = 1.0
+transition = 0
+ease = 2
 
 [sub_resource type="Environment" id="Environment_25x0i"]
 
@@ -10,14 +19,35 @@ size = Vector2(100, 100)
 
 [node name="World" type="Node3D"]
 
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 3.53553, 3.53553)
+script = ExtResource("4_e8nsd")
+priority_override = false
+priority = 0
+follow_mode = 3
+follow_group = Array[NodePath]([NodePath("../Company/Bounds/Bound-X"), NodePath("../Company/Bounds/BoundX"), NodePath("../Company/Bounds/Bound-Z"), NodePath("../Company/Bounds/BoundZ")])
+follow_parameters/distance = 5.0
+follow_parameters/auto_distance = false
+follow_parameters/target_offset = Vector3(0, 0, 0)
+follow_parameters/damping = false
+look_at_mode = 0
+tween_parameters = SubResource("Resource_cc6pa")
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="Camera3D" type="Camera3D" parent="." groups=["MainCameras"]]
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 3.53553, 3.53553)
+fov = 74.5273
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("5_1l175")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_25x0i")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.491733, 0.80369, -0.335084, -0.740893, 0.588357, 0.323904, 0.457467, 0.0889865, 0.884763, 0, 0, 0)
-
-[node name="Camera3D" type="Camera3D" parent="." groups=["MainCameras"]]
-transform = Transform3D(1, 0, 0, 0, 0.856727, 0.515771, 0, -0.515771, 0.856727, 0, 3.92989, 4.33598)
 
 [node name="Company" parent="." instance=ExtResource("1_4gpu8")]
 layout_spacing = 2.0
@@ -27,3 +57,5 @@ mesh = SubResource("PlaneMesh_31d7s")
 
 [node name="Product" parent="." instance=ExtResource("2_n6w7y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.945992, 0, 1.42895)
+
+[editable path="Company"]
