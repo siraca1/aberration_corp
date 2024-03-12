@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjwxxtng8j1cb"]
+[gd_scene load_steps=6 format=3 uid="uid://bjwxxtng8j1cb"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/office.gd" id="1_na4sn"]
+[ext_resource type="Script" path="res://scripts/gameplay/offices/builder_office.gd" id="2_x6rwv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jexws"]
 
@@ -32,3 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, 0.25)
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1)
 text = "Office"
 font_size = 50
+
+[node name="BuilderOffice" type="Node3D" parent="."]
+script = ExtResource("2_x6rwv")

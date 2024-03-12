@@ -13,8 +13,10 @@ var office_data: OfficeData
 
 func setup(input_office_data: OfficeData) -> void:
 	office_data = input_office_data
+	
 	if title_label:
 		title_label.text = office_data.name
+		
 	for slot in office_data.slots_number:
 		var new_instance = slot_scene.instantiate() as Slot
 		slot_holder.add_child(new_instance)

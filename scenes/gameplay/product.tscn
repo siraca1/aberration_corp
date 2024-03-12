@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://uytj3p1q0bs7"]
+[gd_scene load_steps=13 format=3 uid="uid://uytj3p1q0bs7"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/product.gd" id="1_6ea25"]
 [ext_resource type="Script" path="res://addons/drag_and_snap/nodes/draggable.gd" id="2_ovtc0"]
@@ -12,9 +12,45 @@ albedo_color = Color(0, 0.890196, 0.890196, 1)
 material = SubResource("StandardMaterial3D_ml7tt")
 size = Vector3(0.2, 0.2, 0.2)
 
-[node name="Product" type="RigidBody3D"]
+[sub_resource type="Gradient" id="Gradient_0c6oe"]
+offsets = PackedFloat32Array(0, 0.764175, 1)
+colors = PackedColorArray(0.0489394, 0.0484519, 0.173914, 1, 0.00906184, 0.00906144, 0.0611661, 1, 0.00392157, 0.00392157, 0.0156863, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m0clr"]
+gradient = SubResource("Gradient_0c6oe")
+
+[sub_resource type="Curve" id="Curve_cyy74"]
+_data = [Vector2(0, 0), 0.0, 2.14762, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_i0pxd"]
+curve = SubResource("Curve_cyy74")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1msuo"]
+gravity = Vector3(0, 2, 0)
+scale_min = 0.25
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_i0pxd")
+color_ramp = SubResource("GradientTexture1D_m0clr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5ryy"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_nqi60"]
+material = SubResource("StandardMaterial3D_t5ryy")
+
+[node name="Product" type="RigidBody3D" node_paths=PackedStringArray("draggable", "broken_particles")]
 gravity_scale = 0.0
 script = ExtResource("1_6ea25")
+draggable = NodePath("Draggable")
+broken_particles = NodePath("BrokenParticles")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
@@ -26,3 +62,9 @@ mesh = SubResource("BoxMesh_l40nk")
 
 [node name="Draggable" type="Node" parent="."]
 script = ExtResource("2_ovtc0")
+
+[node name="BrokenParticles" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_1msuo")
+draw_pass_1 = SubResource("QuadMesh_nqi60")
