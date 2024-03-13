@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OfficeData" load_steps=3 format=3 uid="uid://w4mppw18u3re"]
+
+[ext_resource type="PackedScene" uid="uid://vtic5egll088" path="res://meshes/mdl_office_treasurer.glb" id="1_xt13k"]
+[ext_resource type="Script" path="res://scripts/resources/office_data.gd" id="2_f6ej2"]
+
+[resource]
+script = ExtResource("2_f6ej2")
+name = "Secretary"
+scene = ExtResource("1_xt13k")
+slots_number = 2
+size = Vector3(1, 1, 1)

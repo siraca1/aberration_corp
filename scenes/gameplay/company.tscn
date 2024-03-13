@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/gameplay/company.gd" id="1_sxn0i"]
 [ext_resource type="Resource" uid="uid://cwcdbrr34rk0x" path="res://resources/office_data/00_office_builder.tres" id="2_4ju4f"]
-[ext_resource type="Resource" uid="uid://cmx4o4yv0jqcb" path="res://resources/office_data/01_office_client.tres" id="3_m5hx5"]
+[ext_resource type="Resource" uid="uid://cmx4o4yv0jqcb" path="res://resources/office_data/01_office_client.tres" id="3_fv4r6"]
 [ext_resource type="Script" path="res://scripts/utils/smart_timer.gd" id="4_121xx"]
 
 [node name="Company" type="Node3D" node_paths=PackedStringArray("links_holder", "bound_minus_x", "bound_plus_x", "bound_minus_z", "bound_plus_z")]
 script = ExtResource("1_sxn0i")
-default_offices = Array[Resource("res://scripts/resources/office_data.gd")]([ExtResource("2_4ju4f"), ExtResource("3_m5hx5")])
+default_offices = Array[Resource("res://scripts/resources/office_data.gd")]([ExtResource("2_4ju4f"), ExtResource("3_fv4r6")])
 links_holder = NodePath("LinksHolder")
 bound_minus_x = NodePath("Bounds/Bound-X")
 bound_plus_x = NodePath("Bounds/BoundX")

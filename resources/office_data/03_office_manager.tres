@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="OfficeData" load_steps=2 format=3 uid="uid://cbu8hwaoup3y"]
-
-[ext_resource type="Script" path="res://scripts/resources/office_data.gd" id="1_nnwq4"]
-
-[resource]
-script = ExtResource("1_nnwq4")
-name = "Manager"
-slots_number = 2
-size = Vector3(1, 1, 1)

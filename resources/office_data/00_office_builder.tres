@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="OfficeData" load_steps=2 format=3 uid="uid://cwcdbrr34rk0x"]
+[gd_resource type="Resource" script_class="OfficeData" load_steps=3 format=3 uid="uid://cwcdbrr34rk0x"]
 
 [ext_resource type="Script" path="res://scripts/resources/office_data.gd" id="1_01cc5"]
+[ext_resource type="PackedScene" uid="uid://t7hbkxwfvdgd" path="res://scenes/gameplay/offices/builder_office.tscn" id="1_07i8p"]
 
 [resource]
 script = ExtResource("1_01cc5")
 name = "Builder"
+scene = ExtResource("1_07i8p")
 slots_number = 1
 size = Vector3(1, 1, 1)

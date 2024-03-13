@@ -30,7 +30,6 @@ func add_office(office: OfficeData = null) -> void:
 	add_child(new_instance)
 	current_offices.append(new_instance)
 	update_struture()
-	print("adding office")
 
 
 func update_struture() -> void:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OfficeData" load_steps=3 format=3 uid="uid://cbu8hwaoup3y"]
+
+[ext_resource type="PackedScene" uid="uid://djetu25jb2n48" path="res://meshes/mdl_office_manager.glb" id="1_evd2q"]
+[ext_resource type="Script" path="res://scripts/resources/office_data.gd" id="2_hr7cu"]
+
+[resource]
+script = ExtResource("2_hr7cu")
+name = "Manager"
+scene = ExtResource("1_evd2q")
+slots_number = 2
+size = Vector3(1, 1, 1)

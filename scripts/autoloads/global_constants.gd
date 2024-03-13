@@ -13,6 +13,7 @@ const SCENE_SLOT: String = "res://scenes/gameplay/slot.tscn"
 
 #region MISC
 const MISC_CREDITS: Array = ["THE END", "a game by Siraca", "Thanks for playing"]
+const MISC_OFFICES_SIZE: float = 0.5
 #endregion
 
 #region DATA
