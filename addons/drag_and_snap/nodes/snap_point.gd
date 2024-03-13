@@ -5,6 +5,9 @@ class_name SnapPoint
 var _snap_shape: Shape3D
 var _collision_shape: CollisionShape3D
 
+signal snaped_object(object)
+signal unsnaped_object(object)
+
 @export var snap_shape: Shape3D:
 	get:
 		return _snap_shape

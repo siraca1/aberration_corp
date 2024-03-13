@@ -4,7 +4,7 @@ extends Node3D
 
 @export var builder_office: OfficeData
 @export var client_office: OfficeData
-@export var layout_spacing: float = 0.5
+@export var layout_spacing: float = 2.0
 @export var links_holder: Node3D = null
 
 @export_subgroup("Bounds")
@@ -55,7 +55,8 @@ func reframe_all() -> void:
 	for i in current_offices.size():
 		var index:float = i as float / current_offices.size() as float
 		print(index)
-		current_offices[i].position = Vector3.RIGHT * index * current_offices.size() * layout_spacing
+		current_offices[i].position = (
+			Vector3.RIGHT * index * current_offices.size() * layout_spacing)
 		bounds = _update_bounds_data(bounds, current_offices[i].global_position)
 	_update_bounds_positions(bounds)
 

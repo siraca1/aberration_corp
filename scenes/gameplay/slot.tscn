@@ -28,3 +28,6 @@ mesh = SubResource("BoxMesh_n5jkj")
 [node name="SnapPoint" type="Area3D" parent="."]
 script = ExtResource("2_vtodu")
 snap_shape = SubResource("BoxShape3D_da285")
+
+[connection signal="snaped_object" from="SnapPoint" to="." method="_on_snap_point_snaped_object"]
+[connection signal="unsnaped_object" from="SnapPoint" to="." method="_on_snap_point_unsnaped_object"]

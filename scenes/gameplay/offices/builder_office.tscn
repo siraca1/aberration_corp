@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://t7hbkxwfvdgd"]
+[gd_scene load_steps=4 format=3 uid="uid://t7hbkxwfvdgd"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/offices/builder_office.gd" id="1_jgc6u"]
 [ext_resource type="PackedScene" uid="uid://bsi83pp4648ab" path="res://meshes/mdl_office_builder.glb" id="2_w5j8e"]
+[ext_resource type="Script" path="res://scripts/utils/smart_timer.gd" id="3_spihy"]
 
 [node name="BuilderOffice" type="Node3D"]
 script = ExtResource("1_jgc6u")
 
 [node name="mdl_office_builder" parent="." instance=ExtResource("2_w5j8e")]
+
+[node name="SmartTimer" type="Timer" parent="." node_paths=PackedStringArray("target_node")]
+wait_time = 10.0
+autostart = true
+script = ExtResource("3_spihy")
+target_node = NodePath("..")
+target_method = "spawn_product"

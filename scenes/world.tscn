@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://ce0citawrgmt6"]
+[gd_scene load_steps=9 format=3 uid="uid://ce0citawrgmt6"]
 
 [ext_resource type="PackedScene" uid="uid://dqa62ebyry5ln" path="res://scenes/gameplay/company.tscn" id="1_4gpu8"]
-[ext_resource type="PackedScene" uid="uid://uytj3p1q0bs7" path="res://scenes/gameplay/product.tscn" id="2_n6w7y"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="4_e8nsd"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_1l175"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_6gaw8"]
@@ -43,7 +42,7 @@ camera_3D_resource = null
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["MainCameras"]]
 transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 1.3435, 1.3435)
-fov = 74.9078
+fov = 74.0274
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("5_1l175")
@@ -55,15 +54,11 @@ environment = SubResource("Environment_25x0i")
 transform = Transform3D(0.491733, 0.80369, -0.335084, -0.740893, 0.588357, 0.323904, 0.457467, 0.0889865, 0.884763, 0, 0, 0)
 
 [node name="Company" parent="." instance=ExtResource("1_4gpu8")]
-layout_spacing = 2.0
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_31d7s")
 
 [node name="SnapSurface" type="Node" parent="Floor"]
 script = ExtResource("5_u4d18")
-
-[node name="Product" parent="." instance=ExtResource("2_n6w7y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.945992, 0, 1.42895)
 
 [editable path="Company"]

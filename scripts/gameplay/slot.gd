@@ -5,14 +5,9 @@ extends Area3D
 var content
 
 
-func get_content():
-	if content:
-		return content
+func _on_snap_point_snaped_object(object: Variant) -> void:
+	content = object
 
 
-func set_content(new_content) -> bool:
-	if content:
-		return false
-	
-	content = new_content
-	return true
+func _on_snap_point_unsnaped_object(object: Variant) -> void:
+	content = null

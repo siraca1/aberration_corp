@@ -9,6 +9,7 @@ const SCENE_WORLD: String = "res://scenes/world.tscn"
 const SCENE_OFFICE: String = "res://scenes/gameplay/office.tscn"
 const SCENE_LINK: String = "res://scenes/gameplay/link.tscn"
 const SCENE_SLOT: String = "res://scenes/gameplay/slot.tscn"
+const SCENE_PRODUCT: String = "res://scenes/gameplay/product.tscn"
 #endregion
 
 #region MISC

@@ -49,7 +49,15 @@ func is_snapped():
 	return _snapped_to != null
 
 func set_snapped(snapped_to):
+	var old_snaped_to_point := _snapped_to as SnapPoint
+	if old_snaped_to_point:
+		_snapped_to.unsnaped_object.emit(get_parent())
+	
 	_snapped_to = snapped_to
+	
+	var snaped_to_point := _snapped_to as SnapPoint
+	if snaped_to_point:
+		_snapped_to.snaped_object.emit(get_parent())
 
 func get_original_parent():
 	return _original_parent
