@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh3l20pppn4lx"]
+[gd_scene load_steps=3 format=3 uid="uid://bh3l20pppn4lx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6ynd"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_s7grd"]
-top_radius = 0.1
-bottom_radius = 0.1
+material = SubResource("StandardMaterial3D_q6ynd")
+top_radius = 0.025
+bottom_radius = 0.025
 height = 1.0
 
 [node name="Link" type="Node3D"]

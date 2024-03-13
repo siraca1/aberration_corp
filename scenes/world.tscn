@@ -21,25 +21,29 @@ size = Vector2(100, 100)
 [node name="World" type="Node3D"]
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 3.53553, 3.53553)
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 1.3435, 1.3435)
 script = ExtResource("4_e8nsd")
 priority_override = false
 priority = 0
 follow_mode = 3
 follow_group = Array[NodePath]([NodePath("../Company/Bounds/Bound-X"), NodePath("../Company/Bounds/BoundX"), NodePath("../Company/Bounds/Bound-Z"), NodePath("../Company/Bounds/BoundZ")])
-follow_parameters/distance = 5.0
-follow_parameters/auto_distance = false
+follow_parameters/auto_distance = true
+follow_parameters/min_distance = 1.0
+follow_parameters/max_distance = 10.0
+follow_parameters/auto_distance_divisor = 20.0
 follow_parameters/target_offset = Vector3(0, 0, 0)
 follow_parameters/damping = false
-look_at_mode = 0
+look_at_mode = 3
+look_at_group = Array[NodePath]([NodePath("../Company/Bounds/Bound-X"), NodePath("../Company/Bounds/BoundX"), NodePath("../Company/Bounds/Bound-Z"), NodePath("../Company/Bounds/BoundZ")])
+look_at_parameters/look_at_target_offset = Vector3(0, 0, 0)
 tween_parameters = SubResource("Resource_cc6pa")
 tween_on_load = true
 inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["MainCameras"]]
-transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 3.53553, 3.53553)
-fov = 74.1064
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 1.3435, 1.3435)
+fov = 74.9078
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("5_1l175")

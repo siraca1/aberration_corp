@@ -35,7 +35,13 @@ func add_office(office: OfficeData = null, at_last_pos: bool = false) -> void:
 	else:
 		current_offices.insert(current_offices.size() - 1, new_instance)
 		await get_tree().process_frame
-		
+	
+	var tween = get_tree().create_tween()
+	tween.bind_node(new_instance)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.tween_property(new_instance, "scale", new_instance.scale * 1.5, 0.15)
+	tween.chain().tween_property(new_instance, "scale", new_instance.scale, 0.15)
+	
 	update_struture()
 
 
