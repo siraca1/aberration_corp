@@ -7,7 +7,9 @@
 
 [node name="Company" type="Node3D" node_paths=PackedStringArray("links_holder", "bound_minus_x", "bound_plus_x", "bound_minus_z", "bound_plus_z")]
 script = ExtResource("1_sxn0i")
-default_offices = Array[Resource("res://scripts/resources/office_data.gd")]([ExtResource("2_4ju4f"), ExtResource("3_fv4r6")])
+builder_office = ExtResource("2_4ju4f")
+client_office = ExtResource("3_fv4r6")
+layout_spacing = 10.0
 links_holder = NodePath("LinksHolder")
 bound_minus_x = NodePath("Bounds/Bound-X")
 bound_plus_x = NodePath("Bounds/BoundX")

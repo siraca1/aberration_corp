@@ -2,7 +2,8 @@ class_name Company
 extends Node3D
 
 
-@export var default_offices: Array[OfficeData]
+@export var builder_office: OfficeData
+@export var client_office: OfficeData
 @export var layout_spacing: float = 0.5
 @export var links_holder: Node3D = null
 
@@ -18,9 +19,9 @@ var link_scene: PackedScene = preload(GlobalConstants.SCENE_LINK)
 var current_offices: Array[Office]
 
 
-func add_office(office: OfficeData = null) -> void:
+func add_office(office: OfficeData = null, at_last_pos: bool = false) -> void:
 	if not office:
-		office = GameManager.get_office_database(current_offices.size());
+		office = GameManager.get_office_database(current_offices.size() - 2);
 	if not office:
 		GameManager.end_game(false)
 		return
@@ -28,7 +29,13 @@ func add_office(office: OfficeData = null) -> void:
 	var new_instance = office_scene.instantiate() as Office
 	new_instance.setup(office)
 	add_child(new_instance)
-	current_offices.append(new_instance)
+	
+	if at_last_pos:
+		current_offices.append(new_instance)
+	else:
+		current_offices.insert(current_offices.size() - 1, new_instance)
+		await get_tree().process_frame
+		
 	update_struture()
 
 
@@ -40,8 +47,9 @@ func update_struture() -> void:
 func reframe_all() -> void:
 	var bounds: Vector4
 	for i in current_offices.size():
-		var index:float = i as float / default_offices.size() as float
-		current_offices[i].position = Vector3(index * current_offices[i].office_data.size.x * 2.0 + index * layout_spacing, 0, 0)
+		var index:float = i as float / current_offices.size() as float
+		print(index)
+		current_offices[i].position = Vector3.RIGHT * index * current_offices.size() * layout_spacing
 		bounds = _update_bounds_data(bounds, current_offices[i].global_position)
 	_update_bounds_positions(bounds)
 
@@ -60,8 +68,8 @@ func create_links() -> void:
 
 
 func _ready() -> void:
-	for office in default_offices:
-		add_office(office)
+	add_office(builder_office, true)
+	add_office(client_office, true)
 
 
 func _update_bounds_data(bounds: Vector4, new_vector: Vector3) -> Vector4:
